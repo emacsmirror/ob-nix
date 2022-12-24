@@ -6,6 +6,7 @@
 ;; Keywords: lisp, tools
 ;; Homepage: https://codeberg.org/theesm/ob-nix
 ;; Version: 0.01
+;; Package-Requires: ((emacs "24.1"))
 
 ;;; License:
 
