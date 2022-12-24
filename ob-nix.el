@@ -52,6 +52,7 @@ Argument PARAMS takes a source block paramters."
   (let ((in-file (org-babel-temp-file "nix" ".nix"))
 	 (json (cdr (assoc :json params)))
 	 (xml (cdr (assoc :xml params)))
+	 (strict (cdr (assoc :strict params)))
          (verbosity (or (cdr (assq :verbosity params)) t)))
     (let ((cmd (concat ob-nix-command
 		 " --eval "
@@ -59,6 +60,8 @@ Argument PARAMS takes a source block paramters."
 		 "--json ")
 		 (if xml
 		 "--xml ")
+		 (if strict
+		 "--strict ")
 		 (if verbosity
 		 "--verbose ")
 		 " -- "
