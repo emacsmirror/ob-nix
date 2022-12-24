@@ -67,5 +67,6 @@
     (org-babel-eval cmd "")
     )))
 
-(provide 'ob-nix)
 
+(provide 'ob-nix)
+;;; ob-nix.el ends here
