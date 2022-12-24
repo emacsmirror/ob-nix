@@ -1,4 +1,4 @@
-;;; ob-nix.el --- Simple org-babel support for nix
+;;; ob-nix.el --- Simple org-babel support for nix -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2022 Wilko Meyer
 
