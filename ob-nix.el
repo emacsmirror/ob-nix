@@ -1,9 +1,9 @@
-;;; ob-nix.el --- simple org-babel support for nix
+;;; ob-nix.el --- Simple org-babel support for nix
 
 ;; Copyright (C) 2022 Wilko Meyer
 
 ;; Author: Wilko Meyer <w-devel@wmeyer.eu>
-;; Keywords: literate programming, nix
+;; Keywords: lisp, tools
 ;; Homepage: https://codeberg.org/theesm/ob-nix
 ;; Version: 0.01
 
@@ -39,19 +39,20 @@
 (require 'ob-eval)
 ;; possibly require modes required for your language
 
-(defcustom org-babel-nix-command "nix-instantiate"
+(defcustom ob-nix-command "nix-instantiate"
   "Name of command to use for executing nix code."
   :group 'org-babel
-  :type 'string
-  )
+  :type 'string)
 
 (defun org-babel-execute:nix (body params)
-  "Evaluate nix code with org-babel."
+  "Evaluate nix code with org-babel.
+Argument BODY takes a source blocks body.
+Argument PARAMS takes a source block paramters."
   (let ((in-file (org-babel-temp-file "nix" ".nix"))
 	 (json (cdr (assoc :json params)))
 	 (xml (cdr (assoc :xml params)))
          (verbosity (or (cdr (assq :verbosity params)) t)))
-    (let ((cmd (concat org-babel-nix-command
+    (let ((cmd (concat ob-nix-command
 		 " --eval "
 		 (if json
 		 "--json ")
@@ -64,8 +65,7 @@
     (with-temp-file in-file
       (insert body))
     (message "%s" cmd)
-    (org-babel-eval cmd "")
-    )))
+    (org-babel-eval cmd ""))))
 
 
 (provide 'ob-nix)
